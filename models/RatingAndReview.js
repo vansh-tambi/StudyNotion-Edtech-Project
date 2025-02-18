@@ -13,8 +13,7 @@ const ratingAndReview = new mongoose.Schema({
     required:{
         type:String,
         required:true
-    },
-
+    }
 
 })
 
