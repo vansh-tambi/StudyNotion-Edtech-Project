@@ -5,7 +5,8 @@ const otpGenerator= require("otp-generator");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const { SchemaTypeOptions } = require("mongoose");
+const nodemailer = require("nodemailer");
+const mailSender = require("../utils/mailSender");
 
 exports.sendOTP = async(req, res) => {
 
@@ -179,5 +180,58 @@ exports.login = async(req, res )=> {
             message:"Login Failure try again",
         })
     }
+}
 
+exports.changePassword = async (req, res) =>{
+
+    try{
+        const{email, oldPassword , newPassword, confirmNewPassword} = req.body;
+     if(!email || !oldPassword || !newPassword || !confirmNewPassword){
+        return res.status(400).json({
+            success:false,
+            message:"All fields are required"
+        });
+     }
+     if(newPassword !== confirmNewPassword){
+        return res.status(400).json({
+            success:false,
+            message:"New password and confirm password do not match"
+        });
+     }
+
+     const user = await User.findOne({email});
+     if(!user){
+        return res.status(400).json({
+            success:false,
+            message:"User does not exists"
+        })
+     }
+
+     const isMatch = await bcrypt.compare(oldPassword, user.password);
+     if(!isMatch){
+        return res.status(400).json({
+            success:false,
+            message:"your Old password is incorrect"
+        })
+     }
+     const hashedPassword = await bcrypt.hash(newPassword, 10);
+     user.password = hashedPassword;
+     await user.save();
+     return res.status(200).json({
+        success:true,
+        message:"password changed Successfully"
+     });
+     await mailSender(
+        email,
+        "Password changed Successfully",
+        `<h2>Hello ${user.firstName},</h2>
+        <p>your password has been updated Successfully</p>
+        <p>If this was not you, please contact support immediately.</p>`
+     )
+    }
+
+    catch(err){
+        console.log("Error changing password")
+    }
+    
 }
