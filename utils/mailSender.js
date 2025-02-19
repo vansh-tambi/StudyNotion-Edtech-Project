@@ -22,3 +22,4 @@ const mailSender = async(email , title , body) => {
         console.log("Error in sending OTP" , err);
     }
 }
+module.exports = mailSender;
