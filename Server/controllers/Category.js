@@ -31,16 +31,16 @@ exports.createCategory = async (req, res) => {
         }
 
         // create category
-		const CategoryDetails = await Category.create({
+		const CategorysDetails = await Category.create({
 			name: name,
 			description: description,
 		});
-		console.log(CategoryDetails);
+		console.log(CategorysDetails);
         
         // return success response
 		return res.status(200).json({
 			success: true,
-			message: "Category Created Successfully",
+			message: "Categorys Created Successfully",
 		});
 	} catch (error) {
 		return res.status(500).json({

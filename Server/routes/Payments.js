@@ -16,7 +16,7 @@ router.post("/capturePayment", auth, isStudent, capturePayment)
 // route to verify signature of razorpay and server
 router.post("/verifyPayment", auth, isStudent, verifyPayment)
 
-// route to send payment su     ccessful email to student
+// route to send payment successfull email to student
 router.post("/sendPaymentSuccessEmail", auth, isStudent, sendPaymentSuccessEmail);
 
 module.exports = router

@@ -1,47 +1,63 @@
-const express = require("express");
-const router = express.Router();
+// Import the required modules
+const express = require("express")
+const router = express.Router()
 
+// Import the Controllers
+
+// Course Controllers Import
 const {
-    createCourse,
-    getAllCourses,
-    getCourseDetails,
-    getFullCourseDetails,
-    editCourse,
-    getInstructorCourses,
-    deleteCourse,
+  createCourse,
+  getAllCourses,
+  getCourseDetails,
+  getFullCourseDetails,
+  editCourse,
+  getInstructorCourses,
+  deleteCourse,
 } = require("../controllers/Course")
 
+
+// Categories Controllers Import
 const {
-    showAllCategories,
-    createCategory,
-    categoryPageDetails,
-  } = require("../controllers/Category")
+  showAllCategories,
+  createCategory,
+  categoryPageDetails,
+} = require("../controllers/Category")
 
-  const {
-    createSection,
-    updateSection,
-    deleteSection,
-  } = require("../controllers/Section")
+// Sections Controllers Import
+const {
+  createSection,
+  updateSection,
+  deleteSection,
+} = require("../controllers/Section")
 
-  const {
-    createSubSection,
-    updateSubSection,
-    deleteSubSection,
-  } = require("../controllers/Subsection")
+// Sub-Sections Controllers Import
+const {
+  createSubSection,
+  updateSubSection,
+  deleteSubSection,
+} = require("../controllers/Subsection")
 
-  const {
-    createRating,
-    getAverageRating,
-    getAllRating,
-  } = require("../controllers/RatingAndReview")
+// Rating Controllers Import
+const {
+  createRating,
+  getAverageRating,
+  getAllRating,
+} = require("../controllers/RatingAndReview")
 
-  const {
-    updateCourseProgress
-  } = require("../controllers/courseProgress")
+// course progress controllers import
+const {
+  updateCourseProgress
+} = require("../controllers/courseProgress")
 
-  const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/auth")
+// Importing Middlewares
+const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/auth")
 
- // Courses can Only be Created by Instructors
+
+// ********************************************************************************************************
+//                                      Course routes
+// ********************************************************************************************************
+
+// Courses can Only be Created by Instructors
 router.post("/createCourse", auth, isInstructor, createCourse)
 //Add a Section to a Course
 router.post("/addSection", auth, isInstructor, createSection)

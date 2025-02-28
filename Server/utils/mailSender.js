@@ -1,25 +1,30 @@
-const nodemailer = require("nodemailer");
-require("dotenv").config();
 
-const mailSender = async(email , title , body) => {
+const nodemailer = require("nodemailer");
+
+const mailSender = async (email, title, body) => {
     try{
+        // Create a transporter to send emails
         let transporter = nodemailer.createTransport({
             host:process.env.MAIL_HOST,
             auth:{
-                user:process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS,
             }
-        })
+        });
+
+        // send mail
         let info = await transporter.sendMail({
-            from: "StudyNotion || Vansh Tambi",
-            to:`$email`,
-            subject:`$title`,
-            html: `$body`
+            from: 'StudyNotion',
+            to:`${email}`,
+            subject: `${title}`,
+            html: `${body}`,
         })
         console.log(info);
+        return info;
     }
-    catch(err){
-        console.log("Error in sending OTP" , err);
+    catch(error) {
+        console.log(error.message);
     }
 }
+
 module.exports = mailSender;
