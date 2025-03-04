@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import HighlightText from '../components/core/HomePage/HighlightText';
 import CTAButton from "../components/core/HomePage/Button";
 import Banner from "../assets/Images/banner.mp4";
+import CodeBlocks from '../components/core/HomePage/CodeBlocks';
 const Home = () => {
   return (
     <div>
@@ -40,6 +41,92 @@ const Home = () => {
                     <source src={Banner} />
                 </video>
 
+            </div>
+
+            <div className='flex flex-col gap-y-10 mt-12'>
+                <CodeBlocks 
+                    positioning={"lg:flex-row"}
+                    heading={
+                        <div className='text-4xl font-bold'>
+                            Unlock your <HighlightText text={"Coding Potential"}/> with our online Courses
+                        </div>
+                    }
+
+                    subHeading={
+                        "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
+                    }
+                    ctabtn1={
+                        {
+                            btnText:"Try it yourself",
+                            linkto:"/signup",
+                            active:true
+                        }
+                    }
+
+                    ctabtn2={
+                        {
+                            btnText:"Learn More",
+                            active:false,
+                            linkto:"/login",
+                        }
+                    }
+                    codeblock={
+                        `<!doctype html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8" />
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                            <title>Study Notion</title>
+                        </head>
+                        <body>
+                        </body>
+                        </html>
+                    `}
+
+                    codeColor={"text-yellow-25"}
+                />
+
+                <CodeBlocks 
+                    positioning={"lg:flex-row-reverse"}
+                    heading={
+                        <div className='text-4xl font-bold'>
+                            Start <HighlightText text={"coding in seconds"}/>
+                        </div>
+                    }
+
+                    subHeading={
+                        "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
+                    }
+                    ctabtn1={
+                        {
+                            btnText:"Continue Lesson",
+                            linkto:"/signup",
+                            active:true
+                        }
+                    }
+
+                    ctabtn2={
+                        {
+                            btnText:"Learn More",
+                            active:false,
+                            linkto:"/login",
+                        }
+                    }
+                    codeblock={
+                        `<!doctype html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8" />
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                            <title>Study Notion</title>
+                        </head>
+                        <body>
+                        </body>
+                        </html>
+                    `}
+
+                    codeColor={"text-yellow-25"}
+                />
             </div>
 
         </div>
