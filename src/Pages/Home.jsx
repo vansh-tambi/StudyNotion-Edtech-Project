@@ -133,11 +133,11 @@ const Home = () => {
             </div>
         </div>
         
-        <div className='bg-puregreys-5 text-richblack-700'>
-            <div className='homepage_bg h-[310px]'>
+        <div className='bg-puregreys-5  text-richblack-700'>
+            <div className='homepage_bg h-[310px] '>
             
-                        <div className='w-11/12 max-w-maxContent flex items-center justify-center gap-5 mx-auto'>
-                            <div className='flex flex-row gap-7 text-white mt-25'>
+                        <div className='w-11/12 my-auto max-w-maxContent flex items-center justify-center gap-5  mx-auto '>
+                            <div className='flex flex-row gap-7 text-white mt-33 mb-10' >
                                 <CTAButton active={true} linkto={"/signup"}>
                                     <div className='flex gap-x-3 items-center font-bold'>Explore full catalog <FaArrowRight/></div>
                                 </CTAButton>
@@ -147,35 +147,35 @@ const Home = () => {
                                 </CTAButton>
                             </div>
                         </div>
+
+                        
             </div>
 
 
-            <div className='w-11/12 mx-auto flex justify-center mt-10'>
-                        <div className='flex flex-row gap-5 w-[80%]'>
-                            <div className='text-4xl font-semibold '>
-                                Get the Skills the <HighlightText text={"job that is in demand"}/>
-                            </div>
+            <div className="w-11/12 mx-auto mt-10 flex flex-col items-center justify-between">
+                <div className="flex flex-row  mb-20  gap-20 justify-center">
+                     <div className="text-4xl font-semibold w-1/3">
+                        Get the Skills the <HighlightText text={"job that is in demand"} />
+                    </div>
 
-                            <div className='flex flex-col gap-y-10  items-start'>
-                                <div className='text-[16px]'>
-                                    The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist
-                                    requires more than professional skills
-                                </div>
-                                <CTAButton active={true} linkto={"/signup"}>Learn more</CTAButton>
+                        <div className="flex flex-col gap-y-10 items-start w-1/3">
+                            <div className="text-[16px]">
+                                The modern StudyNotion dictates its own terms. Today, to be a competitive specialist
+                                requires more than professional skills.
                             </div>
-
-                        </div>
+                    <CTAButton active={true} linkto={"/signup"}>Learn more</CTAButton>
+                </div>
             </div>
 
-            <TimeLineSection/>
-            <LearningLanguageSection/>
+    <TimeLineSection />
+    <LearningLanguageSection />
+    </div>
+     </div>
+     <div>
 
-            
-        </div>
+     </div>
 
-        
-
-
+     
     </div>
   )
 }
